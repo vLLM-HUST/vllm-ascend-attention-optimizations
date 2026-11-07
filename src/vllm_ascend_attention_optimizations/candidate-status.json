@@ -1,0 +1,23 @@
+{
+  "schema_version": "vllm-hust/attention-candidate-status/v1",
+  "core_revision": "88ddd5c7e2c2f72c548ff1dcd2bc8040834a9207",
+  "ascend_revision": "7602797593170da4c531f1d8882a7b82dce8a1bc",
+  "candidates": {
+    "core-boundary": {
+      "status": "retired_absorbed",
+      "reason": "Current Core and Ascend maintain evolved, backend-specific decode/prefill boundary implementations."
+    },
+    "persistent-matmul-empty": {
+      "status": "retired_not_consumed",
+      "reason": "The qualified environment did not enable Batch Invariant and never consumed this branch."
+    },
+    "linear-swiglu-graph": {
+      "status": "relocated_operator_family",
+      "reason": "Graph fusion belongs to the operator optimization family and must have exactly one owner."
+    },
+    "pyramidkv": {
+      "status": "port_required",
+      "reason": "The recovered adapter targets the removed native_model_runner_v1.py and an obsolete provider build."
+    }
+  }
+}
