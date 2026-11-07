@@ -1,12 +1,40 @@
 # vLLM Ascend Attention Optimizations
 
-Default-off Ascend attention-path optimization MOD family for vLLM-HUST.
+Default-off Ascend attention-path optimization MOD family for vLLM-HUST. The
+current package is a qualification gate: it is inert by default and rejects
+all recovered legacy selectors until a current-Host implementation exists.
 
 ## Scope
 
 Shared-prefix attention, FIA/FA execution, RoPE and attention-path optimization experiments.
 
 This repository is the canonical integration and evidence home for the family. Every optimization is opt-in and disabled by default until its own compatibility and performance qualification is complete.
+
+## Recovered candidate disposition
+
+| Legacy selector | Disposition | Reason |
+| --- | --- | --- |
+| `core-boundary` | Retired | Current Core and Ascend implement their own evolved decode/prefill boundary logic |
+| `persistent-matmul-empty` | Retired | The original formal environment never consumed this path |
+| `linear-swiglu-graph` | Relocated | This is an operator/fusion concern and must not be duplicated in the attention family |
+| `pyramidkv` | Port required | It depends on the removed `native_model_runner_v1.py` lifecycle and old provider build |
+
+An empty `VLLM_HUST_ATTENTION_OPTIMIZATIONS` value is a no-op. Supplying any
+legacy selector fails closed with its disposition. This prevents an old wheel
+or deployment preset from silently patching a changed Host.
+
+## Current source audit
+
+The audit is pinned to Core `88ddd5c7e2c2f72c548ff1dcd2bc8040834a9207`
+and Ascend `7602797593170da4c531f1d8882a7b82dce8a1bc`:
+
+```bash
+python tools/check_host_contract.py /path/to/vllm-hust /path/to/vllm-ascend-hust
+pytest -q
+```
+
+The family remains `retest_pending`. No legacy performance result is eligible
+for the website until a new mechanism passes current-Host NPU qualification.
 
 ## Ownership
 

@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vllm-ascend-attention-optimizations"
+version = "0.1.0"
+description = "Current-Host qualification gate for Ascend attention MODs"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.entry-points."vllm.general_plugins"]
+attention_optimizations = "vllm_ascend_attention_optimizations:load"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+vllm_ascend_attention_optimizations = ["candidate-status.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
