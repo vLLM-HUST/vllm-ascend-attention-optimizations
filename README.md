@@ -25,7 +25,8 @@ or deployment preset from silently patching a changed Host.
 
 ## Current source audit
 
-The audit is pinned to Core `88ddd5c7e2c2f72c548ff1dcd2bc8040834a9207`
+The audit is pinned to the Core commit verified by the Ascend Host,
+`c4df37dfcc7f72ca41cd43801a468526ecf99a2b`,
 and Ascend `7602797593170da4c531f1d8882a7b82dce8a1bc`:
 
 ```bash

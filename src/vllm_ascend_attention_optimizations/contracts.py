@@ -5,10 +5,10 @@ from __future__ import annotations
 import hashlib
 from pathlib import Path
 
-CORE_REVISION = "88ddd5c7e2c2f72c548ff1dcd2bc8040834a9207"
+CORE_REVISION = "c4df37dfcc7f72ca41cd43801a468526ecf99a2b"
 ASCEND_REVISION = "7602797593170da4c531f1d8882a7b82dce8a1bc"
 CORE_FILES = {
-    "vllm/v1/attention/backends/utils.py": "7d2543591e028b680a66dd9ee7b06c0cc919caae4b6cd74ea5d3358492e13428",
+    "vllm/v1/attention/backends/utils.py": "7d35af7b6b9c255c6762eb89702bb1a3ed0d1b292722be46dd6455ecf2410641",
 }
 ASCEND_FILES = {
     "vllm_ascend/attention/attention_v1.py": "44c43d3610fbc5d50b2a52ef82d5b7ff54b7a1121e5b83b6c9d046f17004c36f",
